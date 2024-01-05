@@ -10,6 +10,18 @@
 #include <kern/kclock.h>
 
 
+// Test the stack backtrace function (lab 1 only)
+void
+test_backtrace(int x)
+{
+	cprintf("entering test_backtrace %d\n", x);
+	if (x > 0)
+		test_backtrace(x-1);
+	else
+		mon_backtrace(0, 0, 0);
+	cprintf("leaving test_backtrace %d\n", x);
+}
+
 void
 i386_init(void)
 {
@@ -28,6 +40,24 @@ i386_init(void)
 
 	// Lab 2 memory management initialization functions
 	mem_init();
+	/*
+	// Exercise 8.3
+	int x = 1, y = 3, z = 4;
+	//cprintf("x %d, y %x, z %d\n", x, y, z);
+
+	// Exercise 8.4
+	unsigned int i = 0x00646c72;
+   	cprintf("H%x Wo%s\n", 57616, &i);
+
+	// Exercise 8.5
+	cprintf("x=%d, y=%d\n", 3);
+	
+	// Exercise 8 challenge (Color)
+	cprintf("%c[%dmHELLO!%c[%dm\n", 0x1B, 32, 0x1B, 0);
+	*/
+
+	// Test the stack backtrace function (lab 1 only)
+	test_backtrace(5);
 
 	// Drop into the kernel monitor.
 	while (1)
