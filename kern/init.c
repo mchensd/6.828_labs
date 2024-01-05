@@ -7,6 +7,7 @@
 #include <kern/monitor.h>
 #include <kern/console.h>
 
+
 // Test the stack backtrace function (lab 1 only)
 void
 test_backtrace(int x)
@@ -34,6 +35,22 @@ i386_init(void)
 	cons_init();
 
 	cprintf("6828 decimal is %o octal!\n", 6828);
+
+	/*
+	// Exercise 8.3
+	int x = 1, y = 3, z = 4;
+	//cprintf("x %d, y %x, z %d\n", x, y, z);
+
+	// Exercise 8.4
+	unsigned int i = 0x00646c72;
+   	cprintf("H%x Wo%s\n", 57616, &i);
+
+	// Exercise 8.5
+	cprintf("x=%d, y=%d\n", 3);
+	
+	// Exercise 8 challenge (Color)
+	cprintf("%c[%dmHELLO!%c[%dm\n", 0x1B, 32, 0x1B, 0);
+	*/
 
 	// Test the stack backtrace function (lab 1 only)
 	test_backtrace(5);
